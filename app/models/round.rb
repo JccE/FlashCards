@@ -1,10 +1,8 @@
 class Round < ApplicationRecord
   belongs_to :user
   belongs_to :deck
-  belongs_to :guess
 
-  belongs_to :card, through: :guess
-  belongs_to :card, through: :deck
+  has_many :guesses
 
   validates :user_id, presence: true
   validates :deck_id, presence: true

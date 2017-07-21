@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   has_many :rounds
-  has_many :guesses, through: :rounds
+  has_many :total_guesses, through: :rounds, class_name: Guess
   has_many :decks, through: :rounds
-  has_many :cards, through: :guesses
 
   validates :username, { presence: true }
   validates :password_hash, { presence: true }
