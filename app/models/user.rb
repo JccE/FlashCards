@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :rounds
-  has_many :total_guesses, through: :rounds, class_name: Guess
+  # has_many :total_guesses, through: :rounds, class_name: Guess
   has_many :decks, through: :rounds
 
   validates :username, { presence: true }
