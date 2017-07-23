@@ -4,7 +4,6 @@ get '/users' do
 end
 
 get "/users/new" do
-  authenticate!
 
   erb :"/users/new"
 end
@@ -18,15 +17,20 @@ end
 
 # start here
 post "/users" do
-  authenticate!
 
-  @user = User.new(params[:user])
-
-  if @user.save
-    session[:user_id]
-    redirect "/users"
+  if params[:user][:password] != params[:password_confirm]
+    @errors = ["Oops! The passwords have to be the same"]
+    return erb :"/users/new"
   else
-    # run other code
+    @user = User.new(params[:user])
+
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      @errors = @user.errors.full_messages
+      erb :"/users/new"
+    end
   end
 
 end
