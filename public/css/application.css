@@ -29,3 +29,7 @@ div.header {
   padding: 0;
   display: inline;
 }
+
+.error {
+  color: red;
+}
