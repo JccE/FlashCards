@@ -6,12 +6,12 @@ get '/rounds' do
   until @round.available_cards == 0
     @deck.cards.each do |card|
       @card = card
-      if params[:user_input].downcase == card.answer.downcase
-        @correct = true
-      else
-        @correct = false
-      end
-      Guess.create(round: @round, card: card, correct?: @correct)
+  #     if params[:user_input].downcase == card.answer.downcase
+  #       @correct = true
+  #     else
+  #       @correct = false
+  #     end
+  #     Guess.create(round: @round, card: card, correct?: @correct)
       @round.guessed_cards += 1
     end
     @round.available_cards -= 1
