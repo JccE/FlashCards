@@ -10,3 +10,22 @@ h1.header {
 div.header {
   padding-top: 10px;
 }
+
+.button-link {
+   background:none!important;
+   color:#337ab7;
+   border:none;
+   padding:0!important;
+   font: inherit;
+   cursor: pointer;
+}
+
+  .button-link:hover {
+    text-decoration: underline;
+  }
+
+.form-delete {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}

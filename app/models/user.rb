@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :rounds
-  # has_many :total_guesses, through: :rounds, class_name: Guess
-  has_many :decks, through: :rounds
+  has_many :decks, through: :rounds, source: :deck
+  has_many :guesses, through: :decks, source: :guesses
 
   validates :username, { presence: true }
   validates :password_hash, { presence: true }
@@ -13,6 +13,10 @@ class User < ApplicationRecord
   def password=(password_new)
     @password = BCrypt::Password.create(password_new)
     self.password_hash = @password
+  end
+
+  def authenticate(password_text)
+    self.password == password_text
   end
 
 end
