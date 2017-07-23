@@ -1,14 +1,20 @@
 <div class="header">
   <h1 class="header">FlashCards</h1>
+
   <nav class="pull-right">
     <ul>
-      <li><a href="/">Home</a></li> | 
+      <li><a href="/">Home</a></li> |
       <% if logged_in? %>
-        <li><a href="#">Profile</a></li> |
-        <li><a href="#">Logout</a></li>
+        <li><a href="/users/<%= current_user.id %>">Profile</a></li> |
+        <li>
+          <form class="form-delete" action="/sessions" method="post">
+            <input type="hidden" value="delete" name="_method" />
+            <input type="submit" value="Logout" class="button-link"/>
+          </form>
+        </li>
       <% else %>
-        <li><a href="/login">Login</a></li> |
-        <li><a href="/register">Register</a></li>
+        <li><a href="/sessions/new">Login</a></li> |
+        <li><a href="/users/new">Register</a></li>
       <% end %>
     </ul>
   </nav>

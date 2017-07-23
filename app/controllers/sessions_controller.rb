@@ -1,35 +1,34 @@
-get "/login" do
+get "/sessions/new" do
 
-  erb :"/login"
+  erb :"/sessions/new"
 end
 
-post "/login" do
+post "/sessions" do
   @user = User.find_by(username: params[:username])
 
-  if @user.password == params[:password]
+  if !@user
+    @errors = ["Oops, you're not registered.  Let's take care of that."]
+    return erb :"/users/new"
+  end
+
+  if @user.authenticate(params[:password])
     session[:user_id] = @user.id
 
-    redirect "/users"
+    redirect "/users/#{@user.id}"
   else
-    @errors = ["Oops, you didn't enter the right password in. Try again"]
-    redirect "/login"
+    @errors = ["Oops, something went awry. Try again!"]
+    redirect "/sessions/new"
   end
 
 end
 
-get "/register" do
+delete "/sessions" do
+  session.delete(:user_id)
 
-  erb :"/register"
+  redirect "/"
 end
 
+get "/not_authorized" do
 
-post "/register" do
-  @user = User.new(params[:user])
-
-  if @user.save
-    redirect "/users"
-  else
-    # run other code
-  end
-
+  erb :"/not_authorized"
 end
