@@ -6,5 +6,5 @@ class Guess < ApplicationRecord
 
   validates :round_id, presence: true
   validates :card_id, presence: true
-  validates :correct_guess, presence: true
+  validates :correct?, presence: true
 end
