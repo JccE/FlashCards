@@ -1,10 +1,10 @@
-<h1><%= @deck.name %> Trivia</h1>
-<br>
-<p><%= @card.question %></p>
-<br>
-<form>
-  Enter your guess:<br>
-  <input type="hidden" name="deck_id" value="<%= @deck.id %>"
+<h1><%= @round.deck.name %> Trivia</h1><br>
+<p><%= @card.question %></p><br>
+
+<% "<p>#{@result}</p>" if !!@result %>
+
+<form action="/guesses" method="post">
+  <label>Enter your guess:</label>
   <input type="hidden" name="card_id" value="<%= @card.id %>"
   <input type="hidden" name="round_id" value="<%= @round.id %>"
   <input type="text" name="input" placeholder="Answer here"><br>
