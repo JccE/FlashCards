@@ -1,0 +1,12 @@
+<h1><%= @deck.name %> Trivia</h1>
+<br>
+<p><%= @card.question %></p>
+<br>
+<form>
+  Enter your guess:<br>
+  <input type="hidden" name="deck_id" value="<%= @deck.id %>"
+  <input type="hidden" name="card_id" value="<%= @card.id %>"
+  <input type="hidden" name="round_id" value="<%= @round.id %>"
+  <input type="text" name="input"><br>
+  <input type="submit" value="submit your guess">
+</form>
