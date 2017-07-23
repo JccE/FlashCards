@@ -105,8 +105,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-<<<<<<< HEAD
-   1.15.2
-=======
    1.15.3
->>>>>>> master
