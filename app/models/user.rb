@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :decks, through: :rounds, source: :deck
   has_many :guesses, through: :decks, source: :guesses
 
-  validates :username, { presence: true }
+  validates :username, { presence: true, uniqueness: true }
   validates :password_hash, { presence: true }
 
   def password
