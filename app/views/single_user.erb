@@ -1,0 +1,50 @@
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+</style>
+
+<body>
+
+<h2> Hello, <%= @user.username %></h2>
+<br>
+<br>
+
+<% if @user.decks %>
+  <% @user.decks.each do |deck| %>
+  
+      <h3><%= deck.name %></h3>
+
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Date</th>
+    <th>Cards in Deck</th>
+    <th>First Guess Correct</th>
+    <th>Total Guesses</th>
+    <br>
+  </tr>
+
+  <tr>
+    <td><%= @user.updated_at %></td>
+    <td><%= @cards_count %></td>
+    <td><%= @user.guesses.count %></td>
+    <td><%= @correct_guesses %></td>
+  </tr>
+</table>
+
+  <% end %>
+<% end %>
+
+
+
+
+</body>
+</html>
