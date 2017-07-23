@@ -1,0 +1,12 @@
+nav ul, nav li {
+  display: inline;
+  list-style-options: none;
+}
+
+h1.header {
+  display: inline;
+}
+
+div.header {
+  padding-top: 10px;
+}

@@ -33,7 +33,7 @@ configure do
   set :root, APP_ROOT.to_path
   # See: http://www.sinatrarb.com/faq.html#sessions
   enable :sessions
-  set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
+  set :session_secret, ENV.fetch('SESSION_SECRET', "96c8525aab3dbdad1823e903868eee85b11982cefdf3ab59a13a7ae0a05f9d3122d824f6ac4b0b37883f596e25c820454cd9a69465e088cf998c8659160a80b5")
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
