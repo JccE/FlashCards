@@ -1,3 +1,9 @@
 
 <h2>Here is the index page for the Flashcards Project</h2>
 <p>Mustache direct trade ugh normcore, whatever prism knausgaard tousled banh mi portland. Hell of try-hard tumeric, schlitz blog williamsburg roof party mumblecore art party cold-pressed slow-carb. Bespoke man braid crucifix leggings activated charcoal palo santo kinfolk stumptown twee butcher typewriter mumblecore ramps hashtag pour-over. DIY synth 8-bit banh mi, whatever retro hot chicken pinterest church-key tofu chillwave man bun you probably haven't heard of them. </p>
+
+  <% @decks.each do |deck| %>
+    <form action="/decks/<%= deck.id %>/rounds" method="post">
+      <input type="submit" value=<%= deck.name %> />
+    </form>
+  <% end %>

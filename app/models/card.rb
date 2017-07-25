@@ -8,4 +8,8 @@ class Card < ApplicationRecord
   validates :answer, presence: true
   validates :deck_id, presence: true
 
+  def self.not_guessed
+    include(:guesses).where(guesses: [])
+  end
+
 end
